@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Montgomery Middle School — Music Program</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #0a2d6e;
+    --blue-mid: #1a4fa8;
+    --blue-light: #2563c4;
+    --yellow: #f5c400;
+    --yellow-dark: #c49a00;
+    --yellow-light: #ffd84d;
+    --white: #ffffff;
+    --off-white: #f7f6f1;
+    --text-dark: #0d1b38;
+    --text-muted: #4a5568;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 60px;
+    border-bottom: 3px solid var(--yellow);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--yellow);
+    letter-spacing: 0.08em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--yellow); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: var(--blue);
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-geo {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* Mayan-inspired geometric background */
+  .hero-geo::before {
+    content: '';
+    position: absolute;
+    right: -80px;
+    top: -80px;
+    width: 560px;
+    height: 560px;
+    border: 60px solid rgba(245,196,0,0.08);
+    transform: rotate(15deg);
+  }
+
+  .hero-geo::after {
+    content: '';
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    width: 380px;
+    height: 380px;
+    border: 3px solid rgba(245,196,0,0.15);
+    transform: rotate(15deg);
+  }
+
+  .hero-step {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: var(--off-white);
+    clip-path: polygon(0 100%, 100% 100%, 100% 40%, 60% 0, 0 40%);
+  }
+
+  .hero-stripe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--yellow);
+  }
+
+  .hero-content {
+    position: relative;
+    padding: 80px 40px 120px;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 86px);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span {
+    color: var(--yellow);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    margin-bottom: 36px;
+    font-style: italic;
+    max-width: 480px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--yellow);
+    color: var(--blue);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .btn-primary:hover { background: var(--yellow-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--yellow);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .stat-item {
+    flex: 1;
+    max-width: 200px;
+    text-align: center;
+    padding: 22px 16px;
+    border-right: 1px solid rgba(10,45,110,0.15);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--blue);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-top: 4px;
+  }
+
+  /* SECTION GENERIC */
+  section { padding: 72px 40px; }
+
+  .section-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 54px);
+    color: var(--text-dark);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .section-title span { color: var(--blue-light); }
+
+  .section-intro {
+    font-family: 'Crimson Pro', serif;
+    font-size: 19px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 580px;
+    margin-bottom: 48px;
+  }
+
+  /* COURSES */
+  #courses { background: var(--off-white); }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    background: #ddd;
+    border: 2px solid #ddd;
+  }
+
+  .course-card {
+    background: var(--white);
+    padding: 32px 28px;
+    position: relative;
+    transition: transform 0.2s;
+    overflow: hidden;
+  }
+
+  .course-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .course-card:hover::before { transform: scaleX(1); }
+  .course-card:hover { transform: translateY(-2px); }
+
+  .course-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .course-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--blue);
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+  }
+
+  .course-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .course-grades {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    border-top: 1px solid #e0ddd5;
+    padding-top: 12px;
+    width: 100%;
+  }
+
+  /* CALENDAR */
+  #calendar { background: var(--blue); }
+
+  #calendar .section-tag { color: var(--yellow-light); }
+  #calendar .section-title { color: var(--white); }
+  #calendar .section-title span { color: var(--yellow); }
+  #calendar .section-intro { color: rgba(255,255,255,0.65); }
+
+  .events-list { display: flex; flex-direction: column; gap: 2px; max-width: 720px; }
+
+  .event-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: rgba(255,255,255,0.06);
+    padding: 18px 24px;
+    border-left: 3px solid var(--yellow);
+    transition: background 0.2s;
+  }
+
+  .event-row:hover { background: rgba(255,255,255,0.1); }
+
+  .event-date {
+    text-align: center;
+    min-width: 52px;
+  }
+
+  .event-month {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .event-day {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .event-info { flex: 1; }
+
+  .event-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .event-detail {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+  }
+
+  .event-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(245,196,0,0.15);
+    color: var(--yellow);
+    white-space: nowrap;
+  }
+
+  /* RESOURCES */
+  #resources { background: var(--off-white); }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .resource-card {
+    background: var(--white);
+    border: 1px solid #e0ddd5;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .resource-card:hover {
+    border-color: var(--blue-light);
+    transform: translateY(-2px);
+  }
+
+  .resource-type {
+    width: 36px;
+    height: 36px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .resource-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+    line-height: 1.3;
+  }
+
+  .resource-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .resource-link {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    text-decoration: none;
+    margin-top: auto;
+  }
+
+  /* DIRECTOR */
+  #director { background: var(--white); }
+
+  .director-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    align-items: start;
+    max-width: 900px;
+  }
+
+  .director-photo {
+    position: relative;
+  }
+
+  .director-photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: var(--yellow);
+    letter-spacing: 0.05em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .director-photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    border: 3px solid var(--yellow);
+    opacity: 0.3;
+  }
+
+  .director-accent {
+    position: absolute;
+    bottom: -8px;
+    left: -8px;
+    right: 8px;
+    top: 8px;
+    border: 2px solid var(--yellow);
+    z-index: -1;
+  }
+
+  .director-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--blue);
+    letter-spacing: 0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .director-title {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--yellow-dark);
+    margin-bottom: 24px;
+  }
+
+  .director-bio {
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .director-credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .credential {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .credential::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--yellow);
+    flex-shrink: 0;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--off-white); }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 900px;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 24px; }
+
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .contact-value {
+    font-size: 15px;
+    color: var(--text-dark);
+    font-weight: 400;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .form-input,
+  .form-textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--white);
+    border: 1px solid #d0ccc4;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus { border-color: var(--blue-light); }
+
+  .form-textarea { min-height: 100px; }
+
+  /* DONATE */
+  #donate {
+    background: var(--yellow);
+    text-align: center;
+    padding: 72px 40px;
+  }
+
+  #donate .section-tag { color: var(--blue-mid); }
+  #donate .section-title { color: var(--blue); margin-bottom: 16px; }
+  #donate .section-intro { color: var(--blue-mid); margin: 0 auto 36px; }
+
+  .donate-tiers {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+
+  .donate-tier {
+    background: rgba(10,45,110,0.08);
+    border: 1px solid rgba(10,45,110,0.15);
+    padding: 16px 28px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    text-align: center;
+  }
+
+  .donate-tier:hover, .donate-tier.active {
+    background: var(--blue);
+    border-color: var(--blue);
+  }
+
+  .donate-tier:hover .tier-amount,
+  .donate-tier.active .tier-amount { color: var(--yellow); }
+
+  .donate-tier:hover .tier-label,
+  .donate-tier.active .tier-label { color: rgba(255,255,255,0.7); }
+
+  .tier-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--blue);
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .tier-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-top: 4px;
+    transition: color 0.2s;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-dark);
+    color: rgba(255,255,255,0.5);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-top: 3px solid var(--yellow);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--yellow);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--yellow); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+  .hero h1      { animation: fadeUp 0.5s 0.1s ease both; }
+  .hero-sub     { animation: fadeUp 0.5s 0.2s ease both; }
+  .hero-actions { animation: fadeUp 0.5s 0.3s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 10px; }
+    section { padding: 52px 20px; }
+    .director-layout { grid-template-columns: 1fr; }
+    .director-photo { max-width: 240px; }
+    .contact-layout { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Montgomery Music</div>
+  <ul class="nav-links">
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#calendar">Calendar</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#director">Director</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#donate">Donate</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-geo"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Montgomery Middle School · Music Program</div>
+    <h1>Home of the <span>Mayans</span></h1>
+    <p class="hero-sub">Building musicians, shaping character, and creating a tradition of excellence in every note.</p>
+    <div class="hero-actions">
+      <a href="#courses" class="btn-primary">Explore Programs</a>
+      <a href="#donate" class="btn-secondary">Support Us</a>
+    </div>
+  </div>
+  <div class="hero-step"></div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number">6</div>
+    <div class="stat-label">Ensembles</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">200+</div>
+    <div class="stat-label">Students</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">12</div>
+    <div class="stat-label">Concerts/Year</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">15+</div>
+    <div class="stat-label">Years of Excellence</div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="section-tag">What We Offer</div>
+  <div class="section-title">Our <span>Programs</span></div>
+  <p class="section-intro">Every student has a place in our program — from first-time musicians to advanced performers ready for the stage.</p>
+  <div class="courses-grid">
+    <div class="course-card">
+      <div class="course-icon">🎺</div>
+      <div class="course-name">Concert Band</div>
+      <p class="course-desc">Our flagship ensemble performing wind, brass, and percussion literature at concerts and festivals throughout the year.</p>
+      <div class="course-grades">Grades 6–8 · Intermediate to Advanced</div>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🥁</div>
+      <div class="course-name">Beginning Band</div>
+      <p class="course-desc">The perfect starting point for new musicians. Students learn fundamentals on their chosen instrument in a supportive group setting.</p>
+      <div class="course-grades">Grade 6 · No Experience Required</div>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🎶</div>
+      <div class="course-name">Choir</div>
+      <p class="course-desc">Vocal training, sight-reading, and choral performance. Students perform at seasonal concerts and community events.</p>
+      <div class="course-grades">Grades 6–8 · All Voices Welcome</div>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🎻</div>
+      <div class="course-name">Orchestra</div>
+      <p class="course-desc">String ensemble performing classical and contemporary repertoire with opportunities for solo and chamber performance.</p>
+      <div class="course-grades">Grades 6–8 · Prior String Experience</div>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🎹</div>
+      <div class="course-name">Music Theory</div>
+      <p class="course-desc">Foundational theory, ear training, and composition. Designed to deepen musicianship across all instruments.</p>
+      <div class="course-grades">Grades 7–8 · Elective Credit</div>
+    </div>
+    <div class="course-card">
+      <div class="course-icon">🎤</div>
+      <div class="course-name">Jazz Ensemble</div>
+      <p class="course-desc">Improvisation, swing, and jazz vocabulary. Performs at school events and regional jazz festivals.</p>
+      <div class="course-grades">Grades 7–8 · Audition Required</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar">
+  <div class="section-tag">Stay in the Loop</div>
+  <div class="section-title">Upcoming <span>Events</span></div>
+  <p class="section-intro">Mark your calendar — all concerts are free and open to the community unless otherwise noted.</p>
+  <div class="events-list">
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-month">Apr</div>
+        <div class="event-day">12</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Spring Band Concert</div>
+        <div class="event-detail">Montgomery Auditorium · 6:30 PM</div>
+      </div>
+      <div class="event-tag">Concert</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-month">Apr</div>
+        <div class="event-day">20</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">District Music Festival</div>
+        <div class="event-detail">Lincoln High School · All Day</div>
+      </div>
+      <div class="event-tag">Festival</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-month">May</div>
+        <div class="event-day">3</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Choir Showcase Night</div>
+        <div class="event-detail">Montgomery Cafeteria · 7:00 PM</div>
+      </div>
+      <div class="event-tag">Concert</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-month">May</div>
+        <div class="event-day">17</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">Jazz at the Courtyard</div>
+        <div class="event-detail">School Courtyard · 5:00 PM · Free Admission</div>
+      </div>
+      <div class="event-tag">Jazz</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-month">Jun</div>
+        <div class="event-day">5</div>
+      </div>
+      <div class="event-info">
+        <div class="event-name">End-of-Year Celebration Concert</div>
+        <div class="event-detail">Montgomery Auditorium · 6:00 PM · All Ensembles</div>
+      </div>
+      <div class="event-tag">Concert</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="section-tag">For Students & Parents</div>
+  <div class="section-title">PDF <span>Resources</span></div>
+  <p class="section-intro">All handouts, guides, and sheet music in one place. Click any resource to download.</p>
+  <div class="resources-grid">
+    <div class="resource-card">
+      <div class="resource-type">📄</div>
+      <div class="resource-name">2024–25 Student Handbook</div>
+      <div class="resource-meta">PDF · Updated August 2024</div>
+      <a href="#" class="resource-link">Download ↓</a>
+    </div>
+    <div class="resource-card">
+      <div class="resource-type">🎼</div>
+      <div class="resource-name">Spring Concert Program Order</div>
+      <div class="resource-meta">PDF · Concert Band</div>
+      <a href="#" class="resource-link">Download ↓</a>
+    </div>
+    <div class="resource-card">
+      <div class="resource-type">📄</div>
+      <div class="resource-name">Practice Log Template</div>
+      <div class="resource-meta">PDF · All Students</div>
+      <a href="#" class="resource-link">Download ↓</a>
+    </div>
+    <div class="resource-card">
+      <div class="resource-type">🎼</div>
+      <div class="resource-name">Instrument Care Guide</div>
+      <div class="resource-meta">PDF · Beginning Band</div>
+      <a href="#" class="resource-link">Download ↓</a>
+    </div>
+    <div class="resource-card">
+      <div class="resource-type">📄</div>
+      <div class="resource-name">Audition Requirements — Jazz</div>
+      <div class="resource-meta">PDF · Jazz Ensemble</div>
+      <a href="#" class="resource-link">Download ↓</a>
+    </div>
+    <div class="resource-card">
+      <div class="resource-type">🎼</div>
+      <div class="resource-name">Sight Reading Exercises Vol. 1</div>
+      <div class="resource-meta">PDF · Music Theory</div>
+      <a href="#" class="resource-link">Download ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTOR -->
+<section id="director">
+  <div class="section-tag">Meet the Director</div>
+  <div class="director-layout">
+    <div class="director-photo">
+      <div class="director-photo-frame">MMS</div>
+      <div class="director-accent"></div>
+    </div>
+    <div>
+      <div class="director-name">Your Name Here</div>
+      <div class="director-title">Director of Music · Montgomery Middle School</div>
+      <p class="director-bio">
+        Welcome to the Montgomery Middle School Music Program. I have had the privilege of building a community of young musicians here, and every year I am inspired by the dedication, creativity, and growth I see in my students.
+      </p>
+      <p class="director-bio">
+        My goal is simple: to give every student a meaningful, joyful experience with music — whether they go on to perform professionally or simply carry a love of music with them for life.
+      </p>
+      <div class="director-credentials">
+        <div class="credential">B.M. in Music Education — [Your University]</div>
+        <div class="credential">M.M. in Instrumental Conducting — [Your University]</div>
+        <div class="credential">Member, NAfME & Texas Music Educators Association</div>
+        <div class="credential">[X] Years of Teaching Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Get in Touch</div>
+  <div class="section-title">Contact <span>Us</span></div>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <p class="section-intro" style="margin-bottom:0;">We'd love to hear from you — students, parents, and community members are always welcome to reach out.</p>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">musicdirector@montgomery.edu</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">(555) 123-4567 ext. 201</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏫</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Montgomery Middle School<br>123 School Drive, Your City, TX</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Office Hours</div>
+          <div class="contact-value">Mon–Fri, 7:30 AM – 4:00 PM</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="Jane Smith">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="jane@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <input type="text" class="form-input" placeholder="e.g. Enrollment question">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="How can we help you?"></textarea>
+      </div>
+      <button class="btn-primary" style="align-self:flex-start;">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section id="donate">
+  <div class="section-tag">Make a Difference</div>
+  <div class="section-title">Support the Mayans</div>
+  <p class="section-intro">Your donation funds instruments, uniforms, festival travel, and sheet music — every dollar goes directly to students.</p>
+  <div class="donate-tiers">
+    <div class="donate-tier">
+      <div class="tier-amount">$25</div>
+      <div class="tier-label">Sheet Music</div>
+    </div>
+    <div class="donate-tier active">
+      <div class="tier-amount">$50</div>
+      <div class="tier-label">Instrument Repair</div>
+    </div>
+    <div class="donate-tier">
+      <div class="tier-amount">$100</div>
+      <div class="tier-label">Festival Trip</div>
+    </div>
+    <div class="donate-tier">
+      <div class="tier-amount">$250</div>
+      <div class="tier-label">New Instrument</div>
+    </div>
+  </div>
+  <a href="#" class="btn-primary">Donate Now via Zeffy →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Montgomery Music · Go Mayans</div>
+  <div class="footer-copy">© 2025 Montgomery Middle School Music Program</div>
+  <ul class="footer-links">
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#calendar">Calendar</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#donate">Donate</a></li>
+  </ul>
+</footer>
+
+<script>
+  document.querySelectorAll('.donate-tier').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.donate-tier').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
